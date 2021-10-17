@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Login / Sign Up Form</title>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="./src/main.css">
+</head>
+<body>
+    <div class="container">
+        <form class="form" id="login">
+            <h1 class="form__title">Login</h1>
+            <div class="form__message form__message--error"></div>
+            <div class="form__input-group">
+                <input type="text" class="form__input" autofocus placeholder="Username or email">
+                <div class="form__input-error-message"></div>
+            </div>
+            <div class="form__input-group">
+                <input type="password" class="form__input" autofocus placeholder="Password">
+                <div class="form__input-error-message"></div>
+            </div>
+            <button class="form__button" type="submit">Continue</button>
+            <p class="form__text">
+                <a href="#" class="form__link">Forgot your password?</a>
+            </p>
+            <p class="form__text">
+                <a class="form__link" href="./" id="linkCreateAccount">Don't have an account? Create account</a>
+            </p>
+        </form>
+        <form class="form form--hidden" id="createAccount">
+            <h1 class="form__title">Create Account</h1>
+            <div class="form__message form__message--error"></div>
+            <div class="form__input-group">
+                <input type="First Name" class="form__input" autofocus placeholder="First Name">
+                <div class="form__input-error-message"></div>
+            </div>
+           <div class="form__input-group">
+                <input type="Lastt Name" class="form__input" autofocus placeholder="Last Name">
+                <div class="form__input-error-message"></div>
+            </div>
+           <div class="form__input-group">
+                <input type="text" id="signupUsername" class="form__input" autofocus placeholder="Username">
+                <div class="form__input-error-message"></div>
+            </div>
+            <div class="form__input-group">
+                <input type="text" class="form__input" autofocus placeholder="Email Address">
+                <div class="form__input-error-message"></div>
+            </div>
+            <div class="form__input-group">
+                <input type="password" class="form__input" autofocus placeholder="Password">
+                <div class="form__input-error-message"></div>
+            </div>
+            <div class="form__input-group">
+                <input type="password" class="form__input" autofocus placeholder="Confirm password">
+                <div class="form__input-error-message"></div>
+            </div>
+          <div class="form__input-group">
+                <input type="Contact" class="form__input" autofocus placeholder="Contact No">
+                <div class="form__input-error-message"></div>
+            <label for="birthday">Birthday-</label>
+		<input type="date"id="birthday" name="Birthday"><br>
+            </div>
+                <div class="tblLogin">
+                    <?php 
+                        if(!empty($success == 1)) { 
+                    ?>
+                    <div class="tableheader">Enter OTP</div>
+                        
+                    <div class="tablerow">
+                        <input type="text" name="otp" placeholder="One Time Password" class="login-input" required>
+                    </div>
+                    <div class="tableheader"><input type="submit" name="submit_otp" value="Submit" class="btnSubmit"></div>
+                    <?php 
+                        } else if ($success == 2) {
+                    ?>
+                    <?php
+                        }
+                        else {
+                    ?>
+                    
+                    <?php 
+                        }
+                    ?>
+                </div>
+            <script>
+  
+                // Function to generate OTP
+                function generateOTP() {
+                          
+                    // Declare a digits variable 
+                    // which stores all digits
+                    var digits = '0123456789';
+                    let OTP = '';
+                    for (let i = 0; i < 4; i++ ) {
+                        OTP += digits[Math.floor(Math.random() * 10)];
+                    }               
+                    return OTP;
+                }
+                  
+                
+                </script>
+                <fieldset>
+                    <legend>Education</legend>
+                    <select class="form-control dropdown" id="education" name="education">
+                      <option value="" selected="selected" disabled="disabled">-- select one --</option>
+                      <option value="No formal education">No formal education</option>
+                      <option value="Primary education">Primary education</option>
+                      <option value="Secondary education">Secondary education or high school</option>
+                      <option value="GED">GED</option>
+                      <option value="Vocational qualification">Vocational qualification</option>
+                      <option value="Bachelor's degree">Bachelor's degree</option>
+                      <option value="Master's degree">Master's degree</option>
+                      <option value="Doctorate or higher">Doctorate or higher</option>
+                    </select>
+                  </fieldset>
+          <script>
+              
+var stateObject = {
+"India": { "Delhi": ["new Delhi", "North Delhi"],
+"Kerala": ["Thiruvananthapuram", "Palakkad"],
+"Goa": ["North Goa", "South Goa"],
+},
+"Australia": {
+"South Australia": ["Dunstan", "Mitchell"],
+"Victoria": ["Altona", "Euroa"]
+}, "Canada": {
+"Alberta": ["Acadia", "Bighorn"],
+"Columbia": ["Washington", ""]
+},
+}
+window.onload = function () {
+var countySel = document.getElementById("countySel"),
+stateSel = document.getElementById("stateSel"),
+districtSel = document.getElementById("districtSel");
+for (var country in stateObject) {
+countySel.options[countySel.options.length] = new Option(country, country);
+}
+countySel.onchange = function () {
+stateSel.length = 1; // remove all options bar first
+districtSel.length = 1; // remove all options bar first
+if (this.selectedIndex < 1) return; // done
+for (var state in stateObject[this.value]) {
+stateSel.options[stateSel.options.length] = new Option(state, state);
+}
+}
+countySel.onchange(); // reset in case page is reloaded
+stateSel.onchange = function () {
+districtSel.length = 1; // remove all options bar first
+if (this.selectedIndex < 1) return; // done
+var district = stateObject[countySel.value][this.value];
+for (var i = 0; i < district.length; i++) {
+districtSel.options[districtSel.options.length] = new Option(district[i], district[i]);
+}
+}
+}
+</script>
+</head>
+<body>
+<form name="myform" id="myForm">
+Select Country: <select name="state" id="countySel" size="1">
+<option value="" selected="selected">Select Country</option>
+</select>
+<br>
+<br>
+Select State: <select name="countrya" id="stateSel" size="1">
+<option value="" selected="selected">Please select Country first</option>
+</select>
+<br>
+<br>
+Select District: <select name="district" id="districtSel" size="1">
+<option value="" selected="selected">Please select State first</option>
+</select><br>
+<label for ="file">My file </label>
+		<input type="file" id="file"name="My file">
+            <button class="form__button" type="submit">Continue</button> 
+            <p class="form__text">
+                <a class="form__link" href="./" id="linkLogin">Already have an account? Sign in</a>
+            </p>
+        </form>
+    </div>  
+    <script src="./src/main.js"></script>
+</body>
